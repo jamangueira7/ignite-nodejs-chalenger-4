@@ -1,0 +1,71 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Desafio 4 Ignite Node.js",
+    "description": "This is an API user registration.",
+    "version": "1.0.0",
+    "contact": {
+      "email": "jamjs7@hotmail.com"
+    }
+  },
+  "paths": {
+    "/users": {
+      "post": {
+        "tags": ["User"],
+        "summary": "Create a user",
+        "description": "Create a new user",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "Object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "name": "user name sample",
+                  "email": "user email sample"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Category already exists"
+          }
+        }
+      },
+      "get": {
+        "tags": ["User"],
+        "summary": "Get all users",
+        "description": "Get all users",
+        "parameters": {
+          "in": "header",
+          "name": "user_id",
+          "required:": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Users already exists"
+          }
+        }
+      }
+    }
+  }
+}
