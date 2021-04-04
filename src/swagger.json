@@ -48,20 +48,65 @@
         "tags": ["User"],
         "summary": "Get all users",
         "description": "Get all users",
-        "parameters": {
-          "in": "header",
-          "name": "user_id",
-          "required:": true,
-          "schema": {
+        "parameters": [
+          {
+            "in": "header",
+            "name": "user_id",
+            "required:": true,
             "type": "string",
             "format": "uuid"
-          }
-        },
+          }],
         "responses": {
-          "201": {
+          "200": {
             "description": "Created"
           },
           "400": {
+            "description": "Users already exists"
+          }
+        }
+      }
+    },
+    "/users/{user_id}/admin": {
+      "patch": {
+        "tags": ["User"],
+        "summary": "Change user to administrator",
+        "description": "Change user to administrator",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "user_id",
+            "required:": true,
+            "type": "string",
+            "format": "uuid"
+          }],
+        "responses": {
+          "200": {
+            "description": "Created"
+          },
+          "404": {
+            "description": "Users already exists"
+          }
+        }
+      }
+    },
+    "/users/{user_id}": {
+      "get": {
+        "tags": ["User"],
+        "summary": "Return user information by IDr",
+        "description": "Return user information by ID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "user_id",
+            "required:": true,
+            "type": "string",
+            "format": "uuid"
+          }],
+        "responses": {
+          "200": {
+            "description": "Created"
+          },
+          "404": {
             "description": "Users already exists"
           }
         }
